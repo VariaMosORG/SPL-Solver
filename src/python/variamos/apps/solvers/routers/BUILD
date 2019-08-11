@@ -1,0 +1,13 @@
+python_library(
+    sources=[
+        "solvers.py",
+        "mini_zinc.py",
+        "transformations.py",
+    ],
+    dependencies=[
+        "//external:fastapi",
+        "//external:pydantic",
+        "//src/python/variamos/libs/mini_zinc",
+        "//src/python/variamos/libs/mx_graph",
+    ],
+)

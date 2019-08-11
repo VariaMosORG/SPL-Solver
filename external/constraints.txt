@@ -1,0 +1,11 @@
+click==7.1.2
+fastapi==0.61.1
+h11==0.11.0
+lxml==4.6.1
+minizinc==0.4.0
+pydantic==1.6.1
+starlette==0.13.6
+typing-extensions==3.7.4.3
+uvicorn==0.12.2
+requests==2.24.0
+nest-asyncio==1.4.1

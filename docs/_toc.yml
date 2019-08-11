@@ -1,0 +1,12 @@
+- file: capitulos/introduccion
+
+- part: Desarrollo
+  chapters:
+    - file: capitulos/desarrollo/arquitectura
+    - file: capitulos/desarrollo/representacion_grafica
+    - file: capitulos/desarrollo/representacion_intermedia
+    - file: capitulos/desarrollo/representacion_modelado
+
+- part: Referencias
+  chapters:
+    - file: capitulos/referencias

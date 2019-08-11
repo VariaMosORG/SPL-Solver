@@ -1,0 +1,4 @@
+title: My sample book
+author: The Jupyter Book Community
+bibtex_bibfiles:
+   - references.bib
