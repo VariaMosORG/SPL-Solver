@@ -1,0 +1,23 @@
+pex_binary(
+    sources=[
+        "app.py",
+    ],
+    entry_point="variamos.apps.solvers.app",
+    dependencies=[
+        "//external:fastapi",
+        "//external:uvicorn",
+        "//src/python/variamos/apps/solvers/routers",
+    ],
+)
+
+python_tests(
+    name="app_tests",
+    sources=[
+        "tests/app_test.py",
+    ],
+    dependencies=[
+        "//src/python/variamos/apps/solvers",
+        "//external:requests",
+    ],
+    tags=["integration_tests"],
+)

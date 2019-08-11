@@ -1,0 +1,22 @@
+python_library(
+    sources=[
+        "__init__.py",
+        "mini_zinc.py"
+    ],
+    dependencies=[
+        "//external:minizinc",
+        "//src/python/variamos/libs/feature_model:feature_model",
+    ],
+)
+
+python_tests(
+    name="mini_zinc_tests",
+    sources=[
+        "tests/mini_zinc_tests.py"
+    ],
+    dependencies=[
+        ":mini_zinc",
+        "//src/python/variamos/libs/feature_model:feature_model",
+    ],
+    tags=["integration_tests"],
+)

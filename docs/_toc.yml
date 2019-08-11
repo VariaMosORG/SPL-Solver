@@ -1,0 +1,33 @@
+- file: index
+
+- part: Resumen
+  chapters:
+  - file: chapters/1.Resumen/1.Resumen.md
+
+- part: Introducción
+  chapters:
+  - file: chapters/2.Introducción/2.1.Lineas-de-producto.md
+    title: Lineas de producto
+  - file: chapters/2.Introducción/2.2.Modelos-de-características.md
+    title: Modelo de características
+
+- part: Objetivos
+  chapters:
+  - file: chapters/3.Objetivos/3.Objetivos.md
+
+- part: Metodología
+  chapters:
+  - file: chapters/4.Metodología/4.Metodología.md
+
+- part: Resultados
+  chapters:
+  - file: chapters/5.Resultados/5.1.Representación-visual.md
+  - file: chapters/5.Resultados/5.2.Representación-intermedia.md
+
+- part: Discusión
+  chapters:
+  - file: chapters/6.Discusión/6.Discusión.md
+
+- part: Conclusión
+  chapters:
+  - file: chapters/7.Conclusión/7.Conclusión.md

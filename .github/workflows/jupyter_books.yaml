@@ -1,0 +1,33 @@
+name: Jupyter Book
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs: 
+  deploy-example-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Requirements
+      run: |
+        pip install -r docs/requirements.txt
+    - name: Build Book
+      run: |
+        jupyter-book build docs/
+    - name: GitHub Pages Action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_build/html
+        publish_branch: gh-pages

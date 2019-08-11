@@ -1,0 +1,6 @@
+lxml>=4.5.2
+minizinc>=0.4.0
+fastapi>=0.61.1
+uvicorn>=0.12.1
+requests>=2.24.0
+nest-asyncio>=1.4.1

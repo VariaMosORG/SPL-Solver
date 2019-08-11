@@ -1,0 +1,21 @@
+title: Modelado & Razonamiento
+logo: images/EAFIT.png
+repository:
+  url: https://github.com/executablebooks/cookiecutter-jupyter-book
+  path_to_book: docs
+
+
+execute:
+  execute_notebooks: force
+
+
+html:
+  favicon                   : "" 
+  navbar_number_sections    : false
+  use_edit_page_button      : false
+  use_repository_button     : true
+  use_issues_button         : true
+  extra_footer              : ""
+  google_analytics_id       : ""
+  home_page_in_navbar       : false
+  baseurl                   : ""
