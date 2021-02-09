@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Representación Gráfica &#8212; My sample book</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Representación Intermedia" href="representacion_intermedia.html" />
+    <link rel="prev" title="Arquitectura" href="arquitectura.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduccion.html">
+   Introducción
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Desarrollo
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="arquitectura.html">
+   Arquitectura
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Representación Gráfica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="representacion_intermedia.html">
+   Representación Intermedia
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="representacion_modelado.html">
+   Representación de Modelado
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Referencias
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../referencias.html">
+   Tabla de Referencias
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/capitulos/desarrollo/representacion_grafica.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fm-en-variamos">
+   FM en VariaMos
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="representacion-grafica">
+<h1>Representación Gráfica<a class="headerlink" href="#representacion-grafica" title="Permalink to this headline">¶</a></h1>
+<p>El manejo de la variabilidad de cientos de componentes y la posible derivación de miles de productos hace de las líneas de productos un problema complejo. Hemos podido aprender de la historia del desarrollo software y sistemas, que la abstracción de todas estas complejidades juega un papel fundamental para poder trabajar efectivamente en este tipo de problemas. La conceptualización de requisitos comunes y variables de una colección de productos y su organización en un modelo, puede ser una buena opción para gestionar la complejidad de la línea de productos.</p>
+<p>Los modelos de características (o por sus siglas en inglés FM) son una técnica gráfica popular de modelado de variabilidad, son una representación de todos los posibles productos que pueden ser derivados de una línea de productos de software en términos de sus características. Estos modelos son utilizados a lo largo del desarrollo de una línea de producto de software, sirviendo como insumo para otros procesos y funcionan para la generación de arquitecturas, documentos e incluso código.</p>
+<p>Los FM están compuestos por caracteristicas, definidas como los atributos que agregan valor a un cliente y distinguen un producto de sus competidores en el mercado. y se representan con una caja con el nombre de la característica en su interior. Y restricciones, que son las relaciones que existen entre productos, muestran las formas en las que estos se pueden asociar para generar un articulo de una linea de productos, estas se representan con flechas que salen de una característica y se dirigen a otra, con algunos signos espaciales que permiten clasificarla.</p>
+<p>Los feature models pueden ser utilizados para derivar todo tipo de producto, en este documento presentaremos como ejemplo canónico un feature model para la derivación de teléfonos celulares. <span id="id1">[<a class="reference internal" href="../referencias.html#id2"><span>DTBS+17</span></a>]</span></p>
+<br/>
+<p><img alt="FM" src="../../_images/FM-Cellphone.png" /></p>
+<br/>
+<p>A pesar de las ventajas de la representación gráfica, estas no pueden ser analizadas directamente por un computador, tampoco son ideales para ser reutilizadas en otros proyectos o incluso otras herramientas de manejo de líneas de producto de software. La transformación de este tipo de modelos a representaciones más adecuada para estos trabajos será un tema que será explorado en los siguientes capítulos.</p>
+<div class="section" id="fm-en-variamos">
+<h2>FM en VariaMos<a class="headerlink" href="#fm-en-variamos" title="Permalink to this headline">¶</a></h2>
+<p>Existen diversos tipos de modelos de características, estos se diferencian dependiendo de las relaciones que se pueden hacer entre los atributos del modelo. En el caso de VariaMos se utilizan modelos basados en cardinalidad, estos permiten expresar con más exactitud casos en que los productos requieren cierta cantidad de componentes delimitada de forma numérica. Para el caso de VariaMos estos son los tipos de restricciones que soporta el modelo:</p>
+<ul class="simple">
+<li><p><strong>Raíz:</strong> Esta es una relación implícita, esto quiere decir no existe una flecha que la denote. Esta restricción es especialmente importante, ya que indica desde donde inicia el modelo y siempre debe estar seleccionada, ya que si no lo está será imposible derivar productos, adicional en un modelo debe existir una y solo una raíz.</p></li>
+<li><p><strong>Opcional:</strong> Es una relación entre una característica padre y una hija, hace referencia que cuando la característica padre pertenece a un producto, la característica hija puede o no hacer parte del mismo producto.</p></li>
+<li><p><strong>Obligatoria:</strong> Es una relación jerárquica entre un padre y un hijo, quiere decir que cuando el padre hace parte de un producto entonces necesariamente la característica hija también tiene que hacer parte del producto.</p></li>
+<li><p><strong>Cardinal Grupal:</strong> Esta relaciona un padre con múltiples hijos, adicional a las flechas que tradicionalmente vemos en otras restricciones, estas tienen una dupla de números, el primero representa la cantidad mínima de hijos que deben estar en el producto cuando el padre hace parte de él mismo, mientras que el segundo se refiere a la cantidad máxima de hijos seleccionados en el mismo escenario.</p></li>
+<li><p><strong>Requerida:</strong> Es una relación entre dos características, una de origien y una de destino, estas no necesariamente deben tener la estructura jerárquica de padre he hija como en las restricciones anteriores, representa la necesidad de elegir la característica de destino cuando la de origen hace parte del producto a derivar.</p></li>
+<li><p><strong>Exclusión:</strong> La exclusión también es una relación de origen y destino, esta expresa la imposibilidad de que tanto la característica de origen y la de destino hagan parte de un mismo producto.</p></li>
+<li><p><strong>Logicas:</strong> Son restricciones que permiten utilizar operadores de lógica proposicional, como AND, OR, XOR. Estas se crean entre una característica padre y múltiples características hijas.</p></li>
+</ul>
+<p>En VariaMos podemos construir modelos con un menú “drag and drop” que permite ubicar fácilmente características y crear las relaciones entre estas, se representa en VariaMos de la siguiente forma.</p>
+<!-- TODO: Añadir algo acerca de las características concretas y abstractas. -->
+<br/>
+<p><img alt="FM" src="../../_images/FM-Cellphone-VariaMos.png" /></p>
+<br/>
+<p>Los modelos de características son construidos utilizando MXGraph, esta tecnología nos permite poder integrar fácilmente componentes gráficos a librerías modernas de desarrollo frontend como es Vue.js haciendo fácil diseñar una UX/UI adecuada para quienes deseen utilizar la herramienta. MXGraph utiliza XML para generar su representación interna, es esta la que nos permite poder armar, construir y mostrar los FM de forma exitosa. Es importante entender cómo se representan cada uno de los componentes del feature model en esta representación.</p>
+<!-- TODO: Agregar texto -->
+<ul class="simple">
+<li><p><strong>Raíz:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">label=</span><span class="s">&quot;Mobile Phone&quot;</span> <span class="na">type=</span><span class="s">&quot;root&quot;</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;strokeWidth=3&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;195&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Característica Concreta:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;concrete</span> <span class="na">label=</span><span class="s">&quot;GPS&quot;</span> <span class="na">type=</span><span class="s">&quot;concrete&quot;</span> <span class="na">selected=</span><span class="s">&quot;false&quot;</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">y=</span><span class="s">&quot;135&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/concrete&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Característica Abstracta:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;abstract</span> <span class="na">label=</span><span class="s">&quot;Screen&quot;</span> <span class="na">type=</span><span class="s">&quot;abstract&quot;</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;strokeWidth=2&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;260&quot;</span> <span class="na">y=</span><span class="s">&quot;135&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/abstract&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Bundle:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bundle</span> <span class="na">label=</span><span class="s">&quot;bundle&quot;</span> <span class="na">type=</span><span class="s">&quot;bundle&quot;</span> <span class="na">bundleType=</span><span class="s">&quot;RANGE&quot;</span> <span class="na">lowRange=</span><span class="s">&quot;1&quot;</span> <span class="na">highRange=</span><span class="s">&quot;1&quot;</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;shape=ellipse&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;582.265625&quot;</span> <span class="na">width=</span><span class="s">&quot;35&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/bundle&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Relación Con Bundle:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_bundle</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.17&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;14&quot;</span> <span class="na">target=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Array</span> <span class="na">as=</span><span class="s">&quot;points&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;1090&quot;</span> <span class="na">y=</span><span class="s">&quot;123&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;970.265625&quot;</span> <span class="na">y=</span><span class="s">&quot;47&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/Array&gt;</span>
+    <span class="nt">&lt;/mxGeometry&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_bundle&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Relación Opcional:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_root</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;optional&quot;</span> <span class="na">id=</span><span class="s">&quot;0.7&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;7&quot;</span> <span class="na">target=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Array</span> <span class="na">as=</span><span class="s">&quot;points&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;50&quot;</span> <span class="na">y=</span><span class="s">&quot;123&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;211.25&quot;</span> <span class="na">y=</span><span class="s">&quot;47&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/Array&gt;</span>
+    <span class="nt">&lt;/mxGeometry&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_root&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Relación Obligatoria:</strong></p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_abstract_root</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;mandatory&quot;</span> <span class="na">id=</span><span class="s">&quot;0.3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;4&quot;</span> <span class="na">target=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Array</span> <span class="na">as=</span><span class="s">&quot;points&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;287.5&quot;</span> <span class="na">y=</span><span class="s">&quot;123&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;256.25&quot;</span> <span class="na">y=</span><span class="s">&quot;49&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/Array&gt;</span>
+    <span class="nt">&lt;/mxGeometry&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_abstract_root&gt;</span>
+</pre></div>
+</div>
+<!-- TODO: Añadir requerida y excluye. -->
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./capitulos/desarrollo"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="arquitectura.html" title="previous page">Arquitectura</a>
+    <a class='right-next' id="next-link" href="representacion_intermedia.html" title="next page">Representación Intermedia</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
