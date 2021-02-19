@@ -199,8 +199,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fm-en-variamos">
-   FM en VariaMos
+  <a class="reference internal nav-link" href="#caracteristicas">
+   Características
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restricciones">
+   Restricciones
   </a>
  </li>
 </ul>
@@ -218,33 +223,20 @@
 <h1>Representación Gráfica<a class="headerlink" href="#representacion-grafica" title="Permalink to this headline">¶</a></h1>
 <p>El manejo de la variabilidad de cientos de componentes y la posible derivación de miles de productos hace de las líneas de productos un problema complejo. Hemos podido aprender de la historia del desarrollo software y sistemas, que la abstracción de todas estas complejidades juega un papel fundamental para poder trabajar efectivamente en este tipo de problemas. La conceptualización de requisitos comunes y variables de una colección de productos y su organización en un modelo, puede ser una buena opción para gestionar la complejidad de la línea de productos.</p>
 <p>Los modelos de características (o por sus siglas en inglés FM) son una técnica gráfica popular de modelado de variabilidad, son una representación de todos los posibles productos que pueden ser derivados de una línea de productos de software en términos de sus características. Estos modelos son utilizados a lo largo del desarrollo de una línea de producto de software, sirviendo como insumo para otros procesos y funcionan para la generación de arquitecturas, documentos e incluso código.</p>
-<p>Los FM están compuestos por caracteristicas, definidas como los atributos que agregan valor a un cliente y distinguen un producto de sus competidores en el mercado. y se representan con una caja con el nombre de la característica en su interior. Y restricciones, que son las relaciones que existen entre productos, muestran las formas en las que estos se pueden asociar para generar un articulo de una linea de productos, estas se representan con flechas que salen de una característica y se dirigen a otra, con algunos signos espaciales que permiten clasificarla.</p>
 <p>Los feature models pueden ser utilizados para derivar todo tipo de producto, en este documento presentaremos como ejemplo canónico un feature model para la derivación de teléfonos celulares. <span id="id1">[<a class="reference internal" href="../referencias.html#id2"><span>DTBS+17</span></a>]</span></p>
 <br/>
 <p><img alt="FM" src="../../_images/FM-Cellphone.png" /></p>
 <br/>
-<p>A pesar de las ventajas de la representación gráfica, estas no pueden ser analizadas directamente por un computador, tampoco son ideales para ser reutilizadas en otros proyectos o incluso otras herramientas de manejo de líneas de producto de software. La transformación de este tipo de modelos a representaciones más adecuada para estos trabajos será un tema que será explorado en los siguientes capítulos.</p>
-<div class="section" id="fm-en-variamos">
-<h2>FM en VariaMos<a class="headerlink" href="#fm-en-variamos" title="Permalink to this headline">¶</a></h2>
-<p>Existen diversos tipos de modelos de características, estos se diferencian dependiendo de las relaciones que se pueden hacer entre los atributos del modelo. En el caso de VariaMos se utilizan modelos basados en cardinalidad, estos permiten expresar con más exactitud casos en que los productos requieren cierta cantidad de componentes delimitada de forma numérica. Para el caso de VariaMos estos son los tipos de restricciones que soporta el modelo:</p>
-<ul class="simple">
-<li><p><strong>Raíz:</strong> Esta es una relación implícita, esto quiere decir no existe una flecha que la denote. Esta restricción es especialmente importante, ya que indica desde donde inicia el modelo y siempre debe estar seleccionada, ya que si no lo está será imposible derivar productos, adicional en un modelo debe existir una y solo una raíz.</p></li>
-<li><p><strong>Opcional:</strong> Es una relación entre una característica padre y una hija, hace referencia que cuando la característica padre pertenece a un producto, la característica hija puede o no hacer parte del mismo producto.</p></li>
-<li><p><strong>Obligatoria:</strong> Es una relación jerárquica entre un padre y un hijo, quiere decir que cuando el padre hace parte de un producto entonces necesariamente la característica hija también tiene que hacer parte del producto.</p></li>
-<li><p><strong>Cardinal Grupal:</strong> Esta relaciona un padre con múltiples hijos, adicional a las flechas que tradicionalmente vemos en otras restricciones, estas tienen una dupla de números, el primero representa la cantidad mínima de hijos que deben estar en el producto cuando el padre hace parte de él mismo, mientras que el segundo se refiere a la cantidad máxima de hijos seleccionados en el mismo escenario.</p></li>
-<li><p><strong>Requerida:</strong> Es una relación entre dos características, una de origien y una de destino, estas no necesariamente deben tener la estructura jerárquica de padre he hija como en las restricciones anteriores, representa la necesidad de elegir la característica de destino cuando la de origen hace parte del producto a derivar.</p></li>
-<li><p><strong>Exclusión:</strong> La exclusión también es una relación de origen y destino, esta expresa la imposibilidad de que tanto la característica de origen y la de destino hagan parte de un mismo producto.</p></li>
-<li><p><strong>Logicas:</strong> Son restricciones que permiten utilizar operadores de lógica proposicional, como AND, OR, XOR. Estas se crean entre una característica padre y múltiples características hijas.</p></li>
-</ul>
-<p>En VariaMos podemos construir modelos con un menú “drag and drop” que permite ubicar fácilmente características y crear las relaciones entre estas, se representa en VariaMos de la siguiente forma.</p>
-<!-- TODO: Añadir algo acerca de las características concretas y abstractas. -->
+<p>Los modelos de características en VariaMos son construidos utilizando MXGraph, esta tecnología nos permite poder integrar fácilmente componentes gráficos a librerías modernas de desarrollo frontend como es Vue.js haciendo fácil diseñar una UX/UI adecuada para quienes deseen utilizar la herramienta. MXGraph utiliza XML para generar su representación interna, es esta la que nos permite poder armar, construir y mostrar los FM de forma exitosa. Es importante entender cómo se representan cada uno de los componentes del feature model en esta representación.</p>
 <br/>
 <p><img alt="FM" src="../../_images/FM-Cellphone-VariaMos.png" /></p>
 <br/>
-<p>Los modelos de características son construidos utilizando MXGraph, esta tecnología nos permite poder integrar fácilmente componentes gráficos a librerías modernas de desarrollo frontend como es Vue.js haciendo fácil diseñar una UX/UI adecuada para quienes deseen utilizar la herramienta. MXGraph utiliza XML para generar su representación interna, es esta la que nos permite poder armar, construir y mostrar los FM de forma exitosa. Es importante entender cómo se representan cada uno de los componentes del feature model en esta representación.</p>
-<!-- TODO: Agregar texto -->
+<p>A pesar de las ventajas de la representación gráfica, estas no pueden ser analizadas directamente por un computador, tampoco son ideales para ser reutilizadas en otros proyectos o incluso otras herramientas de manejo de líneas de producto de software. La transformación de este tipo de modelos a representaciones más adecuada para estos trabajos será un tema que será explorado en los siguientes capítulos.</p>
+<div class="section" id="caracteristicas">
+<h2>Características<a class="headerlink" href="#caracteristicas" title="Permalink to this headline">¶</a></h2>
+<p>Las caracteristicas son los atributos que agregan value a un cliente y distinguen un producto de sus competidores en el mercado, generalmente se representan con una caja en la que dentro se encuentra el nombre de la caracteristica.</p>
 <ul class="simple">
-<li><p><strong>Raíz:</strong></p></li>
+<li><p><strong>Raíz:</strong> Esta es una relación implícita, esto quiere decir no existe una flecha que la denote. Esta restricción es especialmente importante, ya que indica desde donde inicia el modelo y siempre debe estar seleccionada, ya que si no lo está será imposible derivar productos, adicional en un modelo debe existir una y solo una raíz.</p></li>
 </ul>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;root</span> <span class="na">label=</span><span class="s">&quot;Mobile Phone&quot;</span> <span class="na">type=</span><span class="s">&quot;root&quot;</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;strokeWidth=3&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
@@ -254,52 +246,31 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>Característica Concreta:</strong></p></li>
+<li><p><strong>Abstracta:</strong> Permite añadir estructura al modelo, no es necesariamente una característica específica como “GPS” pero es una característica que agrega múltiples características concretas como “Screen” en nuestro ejemplo canónico. Esto permite hacer relaciones entre categorías amplias de características agrupadas.</p></li>
 </ul>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;concrete</span> <span class="na">label=</span><span class="s">&quot;GPS&quot;</span> <span class="na">type=</span><span class="s">&quot;concrete&quot;</span> <span class="na">selected=</span><span class="s">&quot;false&quot;</span> <span class="na">id=</span><span class="s">&quot;7&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;mxGeometry</span> <span class="na">y=</span><span class="s">&quot;135&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/mxCell&gt;</span>
-<span class="nt">&lt;/concrete&gt;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>Característica Abstracta:</strong></p></li>
-</ul>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;abstract</span> <span class="na">label=</span><span class="s">&quot;Screen&quot;</span> <span class="na">type=</span><span class="s">&quot;abstract&quot;</span> <span class="na">id=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;abstract</span> <span class="na">label=</span><span class="s">&quot;abstract&quot;</span> <span class="na">type=</span><span class="s">&quot;abstract&quot;</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;strokeWidth=2&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;260&quot;</span> <span class="na">y=</span><span class="s">&quot;135&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;370&quot;</span> <span class="na">y=</span><span class="s">&quot;120&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/mxCell&gt;</span>
 <span class="nt">&lt;/abstract&gt;</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>Bundle:</strong></p></li>
+<li><p><strong>Concreta:</strong> Estas son las partes indivisibles del modelo de caracteristicas, siempre siendo la hojas del arbol que forma el modelo de caracteristicas, en nuestro ejemplo canonico serían caracteristicas como “GPS”, “Basic” o “MP3”.</p></li>
 </ul>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bundle</span> <span class="na">label=</span><span class="s">&quot;bundle&quot;</span> <span class="na">type=</span><span class="s">&quot;bundle&quot;</span> <span class="na">bundleType=</span><span class="s">&quot;RANGE&quot;</span> <span class="na">lowRange=</span><span class="s">&quot;1&quot;</span> <span class="na">highRange=</span><span class="s">&quot;1&quot;</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;shape=ellipse&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;582.265625&quot;</span> <span class="na">width=</span><span class="s">&quot;35&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;concrete</span> <span class="na">label=</span><span class="s">&quot;concrete&quot;</span> <span class="na">type=</span><span class="s">&quot;concrete&quot;</span> <span class="na">selected=</span><span class="s">&quot;false&quot;</span> <span class="na">id=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;370&quot;</span> <span class="na">y=</span><span class="s">&quot;140&quot;</span> <span class="na">width=</span><span class="s">&quot;100&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/mxCell&gt;</span>
-<span class="nt">&lt;/bundle&gt;</span>
+<span class="nt">&lt;/concrete&gt;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>Relación Con Bundle:</strong></p></li>
-</ul>
-<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_bundle</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.17&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;14&quot;</span> <span class="na">target=</span><span class="s">&quot;12&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Array</span> <span class="na">as=</span><span class="s">&quot;points&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;1090&quot;</span> <span class="na">y=</span><span class="s">&quot;123&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;mxPoint</span> <span class="na">x=</span><span class="s">&quot;970.265625&quot;</span> <span class="na">y=</span><span class="s">&quot;47&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/Array&gt;</span>
-    <span class="nt">&lt;/mxGeometry&gt;</span>
-  <span class="nt">&lt;/mxCell&gt;</span>
-<span class="nt">&lt;/rel_concrete_bundle&gt;</span>
-</pre></div>
 </div>
+<div class="section" id="restricciones">
+<h2>Restricciones<a class="headerlink" href="#restricciones" title="Permalink to this headline">¶</a></h2>
+<p>Las restricciones son las relaciones que existen entre caracteristicas, estas muestran las formas en las que estas se pueden asociar para generar un articulo de una linea de productos, son generalmente representadas con flechas que salen de una característica y se dirigen a otra, con algunos signos espaciales que permiten clasificarla.</p>
 <ul class="simple">
-<li><p><strong>Relación Opcional:</strong></p></li>
+<li><p><strong>Opcional:</strong> Es una relación entre una característica padre y una hija, hace referencia que cuando la característica padre pertenece a un producto, la característica hija puede o no hacer parte del mismo producto.</p></li>
 </ul>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_root</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;optional&quot;</span> <span class="na">id=</span><span class="s">&quot;0.7&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;7&quot;</span> <span class="na">target=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
@@ -314,7 +285,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><strong>Relación Obligatoria:</strong></p></li>
+<li><p><strong>Obligatoria:</strong> Es una relación jerárquica entre un padre y un hijo, quiere decir que cuando el padre hace parte de un producto entonces necesariamente la característica hija también tiene que hacer parte del producto.</p></li>
 </ul>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_abstract_root</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;mandatory&quot;</span> <span class="na">id=</span><span class="s">&quot;0.3&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;noEdgeStyle=1;orthogonal=1;&quot;</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;4&quot;</span> <span class="na">target=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
@@ -328,7 +299,70 @@
 <span class="nt">&lt;/rel_abstract_root&gt;</span>
 </pre></div>
 </div>
-<!-- TODO: Añadir requerida y excluye. -->
+<ul class="simple">
+<li><p><strong>Cardinal Grupal:</strong> Esta relaciona un padre con múltiples hijos, adicional a las flechas que tradicionalmente vemos en otras restricciones, estas tienen una dupla de números, el primero representa la cantidad mínima de hijos que deben estar en el producto cuando el padre hace parte de él mismo, mientras que el segundo se refiere a la cantidad máxima de hijos seleccionados en el mismo escenario.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bundle</span> <span class="na">label=</span><span class="s">&quot;bundle&quot;</span> <span class="na">type=</span><span class="s">&quot;bundle&quot;</span> <span class="na">bundleType=</span><span class="s">&quot;RANGE&quot;</span> <span class="na">lowRange=</span><span class="s">&quot;1&quot;</span> <span class="na">highRange=</span><span class="s">&quot;1&quot;</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;shape=ellipse&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;130&quot;</span> <span class="na">width=</span><span class="s">&quot;35&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/bundle&gt;</span>
+
+<span class="nt">&lt;rel_concrete_bundle</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;3&quot;</span> <span class="na">target=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_bundle&gt;</span>
+
+<span class="nt">&lt;rel_bundle_abstract</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.5&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;6&quot;</span> <span class="na">target=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_bundle_abstract&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Requerida:</strong> Es una relación entre dos características, una de origien y una de destino, estas no necesariamente deben tener la estructura jerárquica de padre he hija como en las restricciones anteriores, representa la necesidad de elegir la característica de destino cuando la de origen hace parte del producto a derivar.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_concrete</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;requires&quot;</span> <span class="na">id=</span><span class="s">&quot;0.3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;3&quot;</span> <span class="na">target=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_concrete&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Exclusión:</strong> La exclusión también es una relación de origen y destino, esta expresa la imposibilidad de que tanto la característica de origen y la de destino hagan parte de un mismo producto.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;rel_concrete_concrete</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">relType=</span><span class="s">&quot;excludes&quot;</span> <span class="na">id=</span><span class="s">&quot;0.3&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;3&quot;</span> <span class="na">target=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_concrete&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Logicas:</strong> Son restricciones que permiten utilizar operadores de lógica proposicional, como AND, OR, XOR. Estas se crean entre una característica padre y múltiples características hijas.</p></li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;bundle</span> <span class="na">label=</span><span class="s">&quot;bundle&quot;</span> <span class="na">type=</span><span class="s">&quot;bundle&quot;</span> <span class="na">bundleType=</span><span class="s">&quot;AND&quot;</span> <span class="na">lowRange=</span><span class="s">&quot;1&quot;</span> <span class="na">highRange=</span><span class="s">&quot;1&quot;</span> <span class="na">id=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">style=</span><span class="s">&quot;shape=ellipse&quot;</span> <span class="na">vertex=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;130&quot;</span> <span class="na">width=</span><span class="s">&quot;35&quot;</span> <span class="na">height=</span><span class="s">&quot;35&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/bundle&gt;</span>
+
+<span class="nt">&lt;rel_concrete_bundle</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.4&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;3&quot;</span> <span class="na">target=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_concrete_bundle&gt;</span>
+
+<span class="nt">&lt;rel_bundle_abstract</span> <span class="na">type=</span><span class="s">&quot;relation&quot;</span> <span class="na">id=</span><span class="s">&quot;0.5&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mxCell</span> <span class="na">edge=</span><span class="s">&quot;1&quot;</span> <span class="na">parent=</span><span class="s">&quot;feature&quot;</span> <span class="na">source=</span><span class="s">&quot;6&quot;</span> <span class="na">target=</span><span class="s">&quot;5&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mxGeometry</span> <span class="na">relative=</span><span class="s">&quot;1&quot;</span> <span class="na">as=</span><span class="s">&quot;geometry&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/mxCell&gt;</span>
+<span class="nt">&lt;/rel_bundle_abstract&gt;</span>
+</pre></div>
+</div>
 </div>
 </div>
 
