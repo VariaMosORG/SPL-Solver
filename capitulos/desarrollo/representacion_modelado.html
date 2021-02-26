@@ -52,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tabla de Referencias" href="../referencias.html" />
@@ -193,6 +195,35 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnf">
+   CNF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xcsp">
+   XCSP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minizinc">
+   MiniZinc
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gnuprolog">
+   GNUProlog
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -202,6 +233,139 @@
                 
   <div class="section" id="representacion-de-modelado">
 <h1>Representación de Modelado<a class="headerlink" href="#representacion-de-modelado" title="Permalink to this headline">¶</a></h1>
+<p>Los modelos de características, en adición de ser una herramienta visual para facilitar el entendimiento de una línea de productos, son un problema matemático. Un modelo de características tiene un conjunto de fórmulas matemáticas o booleanas que nos permiten analizar su correctitud, tanto a la hora de construcción del modelo, como al momento de configurarlo y crear productos a partir de este. Para expresar un modelo de características en su fórmula matemática se substituye sus restricciones por sus equivalentes en forma de ecuación. La siguiente tabla muestra la equivalencia que existe entre cada restricción y su representación matemática correspondiente.</p>
+<!-- Mirar como representar bien la cardinalidad en CNF -->
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Restricción</p></th>
+<th class="head"><p>Representación Booleana</p></th>
+<th class="head"><p>Representación Aritmética</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Raíz</p></td>
+<td><p><span class="math notranslate nohighlight">\(característica = verdadero\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(característica = 1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Obligatoria</p></td>
+<td><p><span class="math notranslate nohighlight">\(padre \Leftrightarrow hija\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(padre = hija\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Opcional</p></td>
+<td><p><span class="math notranslate nohighlight">\(padre \Rightarrow hija\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(padre \leq hija\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Requerida</p></td>
+<td><p><span class="math notranslate nohighlight">\(origen \Rightarrow destino\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - origen) + destino \geq 0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Exclusión</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sim(origen \wedge destino)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(origen \times destino = 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cardinalidad</p></td>
+<td><p><span class="math notranslate nohighlight">\((c_1) or (c_1 and c_2) or ... or (c_1 and c_2 ... and c_n)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(cota\_inf * padre \leq \sum_{k}^{i=1} C_i \leq cota\_sup * padre\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Encontrar solución a este conjunto de ecuaciones matemáticas no es tarea sencilla, este tipo de problemas son conocidos como problemas de satisfacibilidad booleana cuando se utilizan las fórmulas en lógica proposicional, o problemas de satisfacibilidad de restricciones cuando se utilizan las fórmulas aritméticas, ambos de estos problemas se encuentran en el conjunto de NP-completo, haciéndolos del tipo de tareas más difíciles computacionalmente. Es por esta razón que un lenguaje de programación convencional no es la herramienta adecuada para solucionar el problema, en estos casos utilizamos herramientas llamadas “solvers” estos son softwares matemáticos que se encargan de encontrar soluciones a problemas matemáticos.</p>
+<p>Existen múltiples formatos que los solvers entienden, en esta sección explicaremos las representaciones CNF que permite utilizar solvers de tipo satisfacibilidad booleana (o SAT por sus siglas en inglés), XCSP y MiniZinc que permiten expresar como un problema de satisfacción de restricciones (o CSP por sus siglas en inglés). Cada una de estas representaciones permite interactuar con una gama de solvers diferentes que también exploramos en los siguientes numerales.</p>
+<div class="section" id="cnf">
+<h2>CNF<a class="headerlink" href="#cnf" title="Permalink to this headline">¶</a></h2>
+<p>En lógica booleana, una fórmula está en forma normal conjuntiva (CNF de su nombre en inglés) si corresponde a una conjunción de cláusulas, donde una cláusula es una disyunción de literales (variables booleanas), y donde un literal y su complemento no pueden aparecer en la misma cláusula. Los únicos conectivos lógicos que pueden aparecer en una fórmula en CNF son la conjunción, disyunción y negación. El operador negación sólo puede aplicarse a un literal, y no a una cláusula completa, lo que significa que este sólo puede preceder a una variable proposicional o un símbolo de predicado.</p>
+<p>Segùn esta definiciòn, las siguientes fórmulas están en CNF:</p>
+<blockquote>
+<div><p><strong>NOT</strong> A <strong>AND</strong> (B <strong>OR</strong> C)</p>
+</div></blockquote>
+<blockquote>
+<div><p>(A <strong>OR</strong> B) <strong>AND</strong> (<strong>NOT</strong> B <strong>OR</strong> C <strong>OR</strong> <strong>NOT</strong> D) <strong>AND</strong> (D <strong>AND</strong> <strong>NOT</strong> E)</p>
+</div></blockquote>
+<blockquote>
+<div><p>A <strong>AND</strong> B</p>
+</div></blockquote>
+<p>Las siguientes fórmulas no están en CNF:</p>
+<blockquote>
+<div><p><strong>NOT</strong> (A <strong>OR</strong> C)</p>
+</div></blockquote>
+<blockquote>
+<div><p>(<strong>A</strong> <strong>AND</strong> B) <strong>OR</strong> C</p>
+</div></blockquote>
+<blockquote>
+<div><p>A <strong>AND</strong> (B <strong>OR</strong> (D <strong>AND</strong> E))</p>
+</div></blockquote>
+<p>Toda fórmula booleana puede ser el equivalente escrita en forma normal conjuntiva. En particular, este es el caso para los tres contraejemplos recién mencionados; que son, respectivamente, equivalentes a las siguientes tres fórmulas normales conjuntivas:</p>
+<blockquote>
+<div><p><strong>NOT</strong> B <strong>OR</strong> <strong>NOT</strong> C</p>
+</div></blockquote>
+<blockquote>
+<div><p>(A <strong>OR</strong> C) <strong>AND</strong> (B <strong>OR</strong> C)</p>
+</div></blockquote>
+<blockquote>
+<div><p>A <strong>AND</strong> (B <strong>OR</strong> D) <strong>AND</strong> (B <strong>OR</strong> E)</p>
+</div></blockquote>
+<p>Usualmente estas fórmulas se escriben en un archivo de texto plano para representar un problema de satisfacción de restricciones booleanas entre un conjunto de literales. Resolver un problema booleano consiste en encontrar un conjunto de valores que al ser asignados a los literales del problema hacen que cada una de las cláusulas del problema sea verdadera. Como el problema de satisfacciòn de relaciones booleanas es la conjunción de todas las cláusulas que conforman el problema, esto equivale a decir que resolver el problema consiste en encontrar un conjunto de valores que al ser asignados a los literales del problema hacen que la clàusula resultante sea verdadera.</p>
+<p>CNF es un formato ASCII para representar estos problemas de SATisfacciòn (SAT) de restricciones o fòrmulas booleanas. La estructura de uno de estos archivos puede ser descrita de la siguiente forma:</p>
+<ol class="simple">
+<li><p>El archivo puede comenzar con líneas de comentario. El primer carácter de cada comentario debe ser una letra “c” minúscula. Generalmente estos comentarios aparecen en una única sección en el encabezado del archivo, pero estos comentarios pueden estar en cualquier parte del archivo en realidad.</p></li>
+<li><p>El archivo puede comenzar con líneas de comentario. El primer carácter de cada comentario debe ser una letra “c” minúscula. Generalmente estos comentarios aparecen en una única sección en el encabezado del archivo, pero estos comentarios pueden estar en cualquier parte del archivo en realidad.</p></li>
+<li><p>El resto del archivo son enunciados o clàusulas; cada uno debe estar en una línea diferente del archivo.</p></li>
+<li><p>Un literal se define por un número positivo que va desde 1 hasta N, donde N es el número de literales que tiene el problema, y la representación negativa de cada de uno de estos literales se hace con un “-” y representa la negación del literal.</p></li>
+<li><p>Cada enunciado o cláusula debe ser finalizado con un 0.</p></li>
+</ol>
+<p>Por ejemplo, el archivo CNF correspondiente a nuestras primeras tres fòrmulas en CNF vistas previamente es el siguiente:</p>
+<blockquote>
+<div><p>c ejemplo de CNF correspondiente a las siguientes fòrmulas</p>
+<p>c NOT A AND (B OR C)}</p>
+<p>c (A OR B) AND (NOT B OR C OR NOT D) AND (D AND NOT E)</p>
+<p>c A AND B</p>
+<p>p cnf 5 3</p>
+<p>1 -3  0</p>
+<p>2  3 -1 0</p>
+</div></blockquote>
+<p>En este caso “c ejemplo de CNF” y las lineas que empizan con “c” son comentarios, “p cnf 5 3” es la descripción del problema compuesto por 3 fórmulas y 5 literales, “1  -3  0” y “2  3 -1  0” son enunciados, en estos ultimos, los espacios representan una disyunción, el 0 seguido de un salto de línea significa una conjunción y el signo negativo representa una negación.</p>
+<ul class="simple">
+<li><p><strong>Opcional:</strong></p></li>
+<li><p><strong>Obligatoria:</strong></p></li>
+<li><p><strong>Cardinal Grupal:</strong></p></li>
+<li><p><strong>Requerida:</strong></p></li>
+<li><p><strong>Exclusión:</strong></p></li>
+<li><p><strong>Logicas:</strong></p></li>
+</ul>
+</div>
+<div class="section" id="xcsp">
+<h2>XCSP<a class="headerlink" href="#xcsp" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Opcional:</strong></p></li>
+<li><p><strong>Obligatoria:</strong></p></li>
+<li><p><strong>Cardinal Grupal:</strong></p></li>
+<li><p><strong>Requerida:</strong></p></li>
+<li><p><strong>Exclusión:</strong></p></li>
+<li><p><strong>Logicas:</strong></p></li>
+</ul>
+</div>
+<div class="section" id="minizinc">
+<h2>MiniZinc<a class="headerlink" href="#minizinc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Opcional:</strong></p></li>
+<li><p><strong>Obligatoria:</strong></p></li>
+<li><p><strong>Cardinal Grupal:</strong></p></li>
+<li><p><strong>Requerida:</strong></p></li>
+<li><p><strong>Exclusión:</strong></p></li>
+<li><p><strong>Logicas:</strong></p></li>
+</ul>
+</div>
+<div class="section" id="gnuprolog">
+<h2>GNUProlog<a class="headerlink" href="#gnuprolog" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Opcional:</strong></p></li>
+<li><p><strong>Obligatoria:</strong></p></li>
+<li><p><strong>Cardinal Grupal:</strong></p></li>
+<li><p><strong>Requerida:</strong></p></li>
+<li><p><strong>Exclusión:</strong></p></li>
+<li><p><strong>Logicas:</strong></p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
